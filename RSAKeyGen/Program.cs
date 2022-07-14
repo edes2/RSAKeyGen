@@ -9,12 +9,13 @@ using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(2048))
   rsapublickey = RSA.ExportRSAPublicKey();
 }
 
-using (FileStream fileStream = new("privatekey.txt", FileMode.Create))
+using (FileStream fileStream = new("privatekey.pem", FileMode.Create))
 {
   fileStream.Write(rsaprivatekey, 0, rsaprivatekey.Length);
 }
 
-using (FileStream fileStream = new("publickey.txt", FileMode.Create))
+using (FileStream fileStream = new("publickey.pem", FileMode.Create))
 {
-  fileStream.Write(rsapublickey, 0, rsapublickey.Length);
+	
+	fileStream.Write(rsapublickey, 0, rsapublickey.Length);
 }
